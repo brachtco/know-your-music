@@ -1,0 +1,17 @@
+#descriptionBox{
+    border: 3px;
+    border-style: double;
+    position: absolute;
+    left: 75%;
+    height: 300px;
+    width: 300px;
+}
+#linksBox {
+    border: 3px;
+    border-style: double;
+    position: absolute;
+    top: 80%;
+    left: 45%;
+    height: 100px;
+    width: 450px;
+}
