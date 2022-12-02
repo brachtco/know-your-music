@@ -1,0 +1,29 @@
+#genreCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    margin: 0;
+    background: lightgrey;
+    padding: 20px;
+    border-radius: 30px;
+    width: 50%;
+    max-width: 420px;
+    margin: 5px;
+
+}
+
+#imageCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%
+    margin: 0;
+    background: lightgrey;
+    padding: 20px;
+    border-radius: 30px;
+    width: 50%;
+    max-width: 420px;
+    margin: 5px;
+
+}
