@@ -1,0 +1,9 @@
+.song-list {
+    border: solid red 1px;
+    width: 30%;
+}
+
+.song-list li {
+    border: solid red 1px;
+    margin: 20px;
+}
