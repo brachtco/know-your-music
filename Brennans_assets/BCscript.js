@@ -1,6 +1,6 @@
 var fetchButton = document.getElementById('submit');
 
-
+//get info from API and load decription in box.
 function getApi(event) {
     event.preventDefault();
     var searchBar = document.getElementById('searchArtist').value;
