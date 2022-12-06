@@ -17,6 +17,8 @@ function getApi(event) {
       description.textContent = obj.artist.bio.summary;
     })
 
+
+  // This function saves the users search history  
   function saveHistory(event) {
     // event.preventDefault();
     var searchHistory = $('#searchHistory')
@@ -29,7 +31,9 @@ function getApi(event) {
   }
   saveHistory()
 
-  function savedArtists(event) {
+
+  // This function will call information from partners' inputs
+  function savedArtists(event) { 
     var savedArtists = $('searchHistoryResult');
     console.log (savedArtists)
 
