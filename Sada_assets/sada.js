@@ -34,7 +34,7 @@ function getApi(event) {
 
   // This function will call information from partners' inputs
   function savedArtists(event) { 
-    var savedArtists = $('searchHistoryResult');
+    var savedArtists = $('.searchHistoryResult');
     console.log (savedArtists)
 
 
@@ -45,11 +45,3 @@ function getApi(event) {
 
 
 fetchButton.addEventListener('click', getApi);
-
-
-
-
-
-
-
-

@@ -34,8 +34,9 @@ function getApi(event) {
 
   // This function will call information from partners' inputs
   function savedArtists(event) { 
-    var savedArtists = $('searchHistoryResult');
+    var savedArtists = $('.searchHistoryResult');
     console.log (savedArtists)
+    //add click event that runs everyones function when click on an artist name
 
 
   }
