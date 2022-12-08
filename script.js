@@ -3,6 +3,7 @@ var fetchButton = document.getElementById('submit');
 
 function getApi(event) {
  event.preventDefault();
+ fetchApi();
 var searchBar = document.getElementById('searchArtist').value;
  $('input[name="searchArtist"]').val('');
  var requestUrl = ` http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&format=json&artist=${searchBar}&api_key=6eb7995f9da6e507011787533014528f`;
@@ -41,6 +42,41 @@ var searchBar = document.getElementById('searchArtist').value;
 
   }
   savedArtists()
+}
+
+
+var apiKey = "6eb7995f9da6e507011787533014528";
+var fetchButton = document.getElementById("submit");
+
+function showAlbum(artist) {
+  var url = `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${artist}&api_key=6eb7995f9da6e507011787533014528f&format=json`;
+  var image = document.getElementById("imageCard");
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      const imageUrl =data.topalbums.album[0].image.pop()["#text"];
+      image.innerHTML = `<img src="${imageUrl}" />`;
+    });
+}
+
+function showInfo(artist) {
+  var url = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artist}&api_key=6eb7995f9da6e507011787533014528f&format=json`;
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      const genres = data.artist.tags.tag.map((genre) => genre.name).join(", ");
+      document.getElementById("genreCard").textContent = genres;
+    });
+}
+
+//get info from API and load description in box.
+function fetchApi(event) {
+  // event.preventDefault();
+  var artist = document.getElementById("searchArtist").value;
+  showAlbum(artist);
+  showInfo(artist);
 }
 
 

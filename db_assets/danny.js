@@ -8,7 +8,7 @@ function showAlbum(artist) {
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      const imageUrl = data.topalbums.album[0].image.pop()["#text"];
+      const imageUrl =data.topalbums.album[0].image.pop()["#text"];
       image.innerHTML = `<img src="${imageUrl}" />`;
     });
 }
