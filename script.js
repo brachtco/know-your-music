@@ -9,7 +9,19 @@ function getApi(event) {
  event.preventDefault();
  fetchApi();
 var searchBar = document.getElementById('searchArtist').value;
- //$('input[name="searchArtist"]').val('');
+var linkBoxTitle = document.getElementById('linkBoxTitle');
+    
+    linkBoxTitle.textContent = searchBar;
+    linkBoxTitle.dataset.lastSearch = searchBar;
+    $('input[name="searchArtist"]').val('');
+    
+    youtubeLink.addEventListener('click', function(){
+      travelToVideo(linkBoxTitle.dataset.lastSearch);
+      });
+
+    wikiLink.addEventListener('click',function(){
+      travelToLink(linkBoxTitle.dataset.lastSearch);
+      });
  var requestUrl = ` http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&format=json&artist=${searchBar}&api_key=6eb7995f9da6e507011787533014528f`;
 
  fetch(requestUrl)
@@ -86,18 +98,13 @@ function fetchApi(event) {
 }
 
 
-function travelToLink (event) {
-  event.preventDefault();
-  var searchBar = document.getElementById('searchArtist').value;
+function travelToLink (searchBar) {
   window.location.href= `https://en.wikipedia.org/wiki/${searchBar}`;
   }
 
-function travelToVideo (event) {
-  event.preventDefault();
-  var searchBar = document.getElementById('searchArtist').value;
+function travelToVideo (searchBar) {
   window.location.href= `https://www.youtube.com/results?search_query=${searchBar}`;
   }
 
-youtubeLink.addEventListener('click', travelToVideo);
-wikiLink.addEventListener('click', travelToLink);
+
 fetchButton.addEventListener('click', getApi);
