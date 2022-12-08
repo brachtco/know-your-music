@@ -12,43 +12,44 @@
   <link rel="stylesheet" href="./db_assets/danny.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="./Patricks_assets/patrick.css" />
-  
+
 </head>
+
 <body>
   <header class="container">
-    <h1 class="col s12">Know your Music</h1>
-    <!-- <nav>
-    </nav> -->
+    <h1 class="col s12 z-depth-2">Know your Music</h1>
   </header>
   <main class="container">
-    <section class="z-depth-2 " id="01"><!--Sada rows 24-40-->
-      <div class="row">
-        <div class="col s2">
-          <h2>Search Bar</h2>
-          <form>
-            <h2><label for="searchArtist">Search for an artist:</label></h2>
-            <input type="search" id="searchArtist" name="searchArtist">
-            <input type="submit" id="submit">
-          </form>
+    <div class="row">
+      <section class="z-depth-2 col s4" id="01"><!--Sada rows 24-40-->
+        <div class="row">
+          <div class="col">
+            <h2>Search Bar</h2>
+            <form>
+              <h2><label for="searchArtist">Search for an artist:</label></h2>
+              <input type="search" id="searchArtist" name="searchArtist">
+              <input type="submit" id="submit">
+            </form>
+          </div>
         </div>
-      </div>
-      <div class="row">  
-        <div class="col s2" id="searchHistory">
-          <h3>Search History</h3>
+        <div class="row">
+          <div class="col" id="searchHistory">
+            <h3>Search History</h3>
+          </div>
         </div>
-      </div>      
-    </section>
-    <section id="02"><!--Patrick rows 41-58-->
+      </section>
+    </div>
+    <section id="02"><!--Patrick rows 42-59-->
       <article>
         <h2></h2>
         <div>
-           <ol class="song-list">
-              <li id="song1"></li>
-              <li id="song2"></li>
-              <li id="song3"></li>
-              <li id="song4"></li>
-              <li id="song5"></li>
-            </ol>
+          <ol class="song-list">
+            <li id="song1"></li>
+            <li id="song2"></li>
+            <li id="song3"></li>
+            <li id="song4"></li>
+            <li id="song5"></li>
+          </ol>
         </div>
         <form>
 
@@ -56,7 +57,7 @@
       </article>
 
     </section>
-    <section id="03"><!--Danny rows 59-77-->
+    <section id="03"><!--Danny rows 60-80-->
       <article>
         <h2></h2>
         <div id="genreCard">
@@ -75,20 +76,20 @@
 
 
 
-        
+
     </section>
-    <section id="Brennan"><!--Brennan rows 80-100>-->
+    <section id="Brennan"><!--Brennan rows 81-105>-->
       <article>
         <h2></h2>
         <div>
           <textarea id="descriptionBox"></textarea>
         </div>
         <div id="linksBox">
-          
+
         </div>
         <div>
-          <button id = "wikiLink">WikiPage For Artist</button>
-          <button id = "youtubeLink">Youtube Videos For Artist</button>
+          <button id="wikiLink">WikiPage For Artist</button>
+          <button id="youtubeLink">Youtube Videos For Artist</button>
         </div>
         <form>
 
