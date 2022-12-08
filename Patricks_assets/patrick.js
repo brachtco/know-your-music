@@ -47,12 +47,12 @@ function getApi(event) {
         })
         .then(function (data) {
             console.log(data)
-            var obj = JSON.parse(JSON.stringify(data));
+            // var obj = JSON.parse(JSON.stringify(data));
             // var topSongsList = document.querySelector('.song-list')
             let index = 1;
             for (let i=0; i < 5; i++) {
                 // topSongsList.textContent = obj.artist.name
-                document.querySelector("#day" + index).textContent = obj.track.name;
+                document.querySelector("#song" + index).textContent = data.toptracks.track[i].name;
                 index += 1
             }
             // topSongsList.textContent = obj.artist.track.name;
