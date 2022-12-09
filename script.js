@@ -21,7 +21,7 @@ function getApi(event) {
   wikiLink.addEventListener('click', function () {
     travelToLink(linkBoxTitle.dataset.lastSearch);
   });
-  var requestUrl = ` http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&format=json&artist=${searchBar}&api_key=6eb7995f9da6e507011787533014528f`;
+  var requestUrl = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&format=json&artist=${searchBar}&api_key=6eb7995f9da6e507011787533014528f`;
 
   fetch(requestUrl)
     .then((response) => {
