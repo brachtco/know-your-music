@@ -1,9 +1,30 @@
-.song-list {
-    border: solid red 1px;
-    width: 30%;
+body {
+    font-family: 'Roboto Mono', monospace;
+}
+
+h1 {
+    font-family: 'Monoton', cursive;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+h3 {
+    font-size: 30px;
+}
+
+/* .container {
+    margin: auto;
+    width: 80%;
+} */
+
+/* .song-list {
+     border: solid red 1px;
+     width: 30%;
 }
 
 .song-list li {
     border: solid red 1px;
     margin: 20px;
-}
+} */
