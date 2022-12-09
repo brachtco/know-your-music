@@ -82,13 +82,11 @@
           </div>
         </div>
         <div id="similarArtists">
-          <ol class="fiveArtists"> Similar Artists:
-            <li id="artist1"></li>
-            <li id="artist2"></li>
-            <li id="artist3"></li>
-            <li id="artist4"></li>
-            <li id="artist5"></li>
-          </ol>
+          <button id="similarArtists1"></button>
+          <button id="similarArtists2"></button>
+          <button id="similarArtists3"></button>
+          <button id="similarArtists4"></button>
+          <button id="similarArtists5"></button>
         </div>
       </section>
       <div class="row"></div>
@@ -111,7 +109,7 @@
 
   <footer>
     <script src="script.js"></script>
-    <!-- <script src="./Brennans_assets/BCscript.js"></script> -->
+    <script src="./Brennans_assets/BCscript.js"></script>
     <!-- <script src="./Sada_assets/sada.js"></script> -->
     <!-- <script src="./Patricks_assets/patrick.js"></script> -->
     <!-- <script src="./db_assets/danny.js"></script> -->
@@ -124,17 +122,34 @@
    var fetchButton = document.getElementById('submit');
    $(fetchButton).on("click" , function(){
                 var searchBar = document.getElementById('searchArtist').value;
-                console.log(searchBar);
+                similarArtists1.style.visibility = 'visible';
+                similarArtists2.style.visibility = 'visible';
+                similarArtists3.style.visibility = 'visible';
+                similarArtists4.style.visibility = 'visible';
+                similarArtists5.style.visibility = 'visible';
                 $.ajax({
                     url: `https://tastedive.com/api/similar?q=${searchBar}&k=445478-Musickno-KWBLL69H&`,
                     dataType: 'jsonp',
                     success: function(results){
                         var obj = JSON.parse(JSON.stringify(results));
                         console.log(obj);
+                        var otherArtists;
+                        // var similarArtists1 = document.getElementById('similarArtists1');
+                        // var similarArtists2 = document.getElementById('similarArtists2');
+                        // var similarArtists3 = document.getElementById('similarArtists3');
+                        // var similarArtists4 = document.getElementById('similarArtists4');
+                        // var similarArtists5 = document.getElementById('similarArtists5');
+                        var searchBar = document.getElementById('searchArtist');
                         index = 1;
                         for (let i=0; i < 5; i++) {
-                          document.getElementById("artist" + index).textContent = obj.Similar.Results[i].Name;
+                          similarArtists[i] = document.getElementById('similarArtists' + index);
+                          similarArtists[i].innerHTML = obj.Similar.Results[i].Name;
                           index += 1
+                          similarArtists[i].addEventListener('click', function(){
+                          searchBar = similarArtists[i].innerHTML;
+                          console.log(searchBar);
+                          getApiAgain(searchBar);
+                          })
                         }
                         
                         $('input[name="searchArtist"]').val('');
