@@ -34,29 +34,25 @@
 //     topTracks.displayTopTracks();
 //   });
 
-var fetchButton = document.getElementById('submit');
+// var fetchButton = document.getElementById('submit');
 
-function getApi(event) {
-    event.preventDefault()
-    var artist = document.getElementById('searchArtist').value;
-    requestUrl = `http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${artist}&api_key=6eb7995f9da6e507011787533014528f&format=json`
-    console.log(artist)
-    fetch(requestUrl)
-        .then((response) => {
-            return response.json();
-        })
-        .then(function (data) {
-            console.log(data)
-            // var obj = JSON.parse(JSON.stringify(data));
-            // var topSongsList = document.querySelector('.song-list')
-            let index = 1;
-            for (let i=0; i < 5; i++) {
-                // topSongsList.textContent = obj.artist.name
-                document.querySelector("#song" + index).textContent = data.toptracks.track[i].name;
-                index += 1
-            }
-            // topSongsList.textContent = obj.artist.track.name;
-        })
-}
+// function getTopTracks(event) {
+//     event.preventDefault()
+//     var artist = document.getElementById('searchArtist').value;
+//     requestUrl = `http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${artist}&api_key=6eb7995f9da6e507011787533014528f&format=json`
+//     console.log(artist)
+//     fetch(requestUrl)
+//         .then((response) => {
+//             return response.json();
+//         })
+//         .then(function (data) {
+//             console.log(data)
+//             let index = 1;
+//             for (let i=0; i < 5; i++) {
+//                 document.querySelector("#song" + index).textContent = data.toptracks.track[i].name;
+//                 index += 1
+//             }
+//         })
+// }
 
-fetchButton.addEventListener('click', getApi);
+// fetchButton.addEventListener('click', getApi);
