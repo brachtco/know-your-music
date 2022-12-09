@@ -31,6 +31,8 @@ function getApi(event) {
       .then(function(data){
         var obj = JSON.parse(JSON.stringify(data));
         var description = document.getElementById('descriptionBox');
+        var string = obj.artist.bio.summary;
+        console.log(string);
         description.textContent = obj.artist.bio.summary;
         wikiLink.style.visibility='visible';
         youtubeLink.style.visibility='visible';
@@ -45,5 +47,32 @@ function travelToVideo (searchBar) {
     window.location.href= `https://www.youtube.com/results?search_query=${searchBar}`;
     }
 
-  fetchButton.addEventListener('click', getApi);
+
+
+function getLinksApi (event) {
+    event.preventDefault();
+
+  var searchBar = document.getElementById('searchArtist').value;
+  linksUrl = `https://tastedive.com/api/similar?q=${searchBar}&k=445472-KnowYour-SHRH2F95&format=json`;
+  console.log(searchBar);
+
+  fetch(linksUrl)
+    .then((response) => {
+      console.log(response);
+       return response.json();
+      })
+      .then(function(data){
+        var obj = JSON.parse(JSON.stringify(data));
+        console.log(obj);
+        // var description = document.getElementById('descriptionBox');
+        // description.textContent = obj.artist.bio.summary;
+        // wikiLink.style.visibility='visible';
+        // youtubeLink.style.visibility='visible';
+      })
+
+
+
+}
+
+fetchButton.addEventListener('click', getApi);
 

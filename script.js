@@ -11,7 +11,7 @@ function getApi(event) {
   var searchBar = document.getElementById('searchArtist').value;
   var linkBoxTitle = document.getElementById('linkBoxTitle');
 
-  linkBoxTitle.textContent = searchBar;
+  
   linkBoxTitle.dataset.lastSearch = searchBar;
 
   youtubeLink.addEventListener('click', function () {
@@ -29,6 +29,8 @@ function getApi(event) {
     })
     .then(function (data) {
       var obj = JSON.parse(JSON.stringify(data));
+      console.log(obj);
+
       var description = document.getElementById('descriptionBox');
       description.textContent = obj.artist.bio.summary;
       wikiLink.style.visibility = 'visible';
@@ -99,7 +101,7 @@ function getApi(event) {
     var artist = document.getElementById('searchArtist').value;
     var linkBoxTitle = document.getElementById('linkBoxTitle');
 
-    linkBoxTitle.textContent = artist;
+    
     linkBoxTitle.dataset.lastSearch = artist;
 
     requestUrl = `http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${artist}&api_key=6eb7995f9da6e507011787533014528f&format=json`
