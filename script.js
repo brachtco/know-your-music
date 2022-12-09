@@ -32,7 +32,7 @@ function getApi(event) {
       console.log(obj);
 
       var description = document.getElementById('descriptionBox');
-      description.textContent = obj.artist.bio.summary;
+      description.innerHTML = obj.artist.bio.summary;
       wikiLink.style.visibility = 'visible';
       youtubeLink.style.visibility = 'visible';
     })

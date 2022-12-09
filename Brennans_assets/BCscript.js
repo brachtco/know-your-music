@@ -31,9 +31,10 @@ function getApi(event) {
       .then(function(data){
         var obj = JSON.parse(JSON.stringify(data));
         var description = document.getElementById('descriptionBox');
-        var string = obj.artist.bio.summary;
+        let string = obj.artist.bio.summary;
+        // let newStr = str.replace()
         console.log(string);
-        description.textContent = obj.artist.bio.summary;
+        description.innerHTML = obj.artist.bio.summary;
         wikiLink.style.visibility='visible';
         youtubeLink.style.visibility='visible';
       })
