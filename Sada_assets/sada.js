@@ -8,11 +8,13 @@ youtubeLink.style.visibility = 'hidden';
 function getApi(event) {
   event.preventDefault();
   fetchApi();
+  saveHistory();
   var searchBar = document.getElementById('searchArtist').value;
   var linkBoxTitle = document.getElementById('linkBoxTitle');
 
-  
+  linkBoxTitle.textContent = searchBar;
   linkBoxTitle.dataset.lastSearch = searchBar;
+  $('input[name="searchArtist"]').val('');
 
   youtubeLink.addEventListener('click', function () {
     travelToVideo(linkBoxTitle.dataset.lastSearch);
@@ -29,8 +31,6 @@ function getApi(event) {
     })
     .then(function (data) {
       var obj = JSON.parse(JSON.stringify(data));
-      console.log(obj);
-
       var description = document.getElementById('descriptionBox');
       description.textContent = obj.artist.bio.summary;
       wikiLink.style.visibility = 'visible';
@@ -50,7 +50,7 @@ function getApi(event) {
 
 
   }
-  saveHistory()
+
 
 
   // This function will call information from partners' inputs
@@ -96,30 +96,6 @@ function getApi(event) {
     showAlbum(artist);
     showInfo(artist);
   }
-
-  function getTopTracks(event) {
-    var artist = document.getElementById('searchArtist').value;
-    var linkBoxTitle = document.getElementById('linkBoxTitle');
-
-    
-    linkBoxTitle.dataset.lastSearch = artist;
-
-    requestUrl = `http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${artist}&api_key=6eb7995f9da6e507011787533014528f&format=json`
-    console.log(artist)
-    fetch(requestUrl)
-        .then((response) => {
-            return response.json();
-        })
-        .then(function (data) {
-            console.log(data)
-            let index = 1;
-            for (let i=0; i < 5; i++) {
-                document.querySelector("#song" + index).textContent = data.toptracks.track[i].name;
-                index += 1
-            }
-        })
-  }
-  getTopTracks();
 
   $('input[name="searchArtist"]').val('');
 }

@@ -5,97 +5,112 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title></title>
-  <link rel="stylesheet" href="./reset.css" />
-  <link rel="stylesheet" href="./style.css" />
+  <!-- <link rel="stylesheet" href="./Brennans_assets/BCstyles.css" /> -->
+  <!-- <link rel="stylesheet" href="./db_assets/danny.css" /> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
+  <!-- <link rel="stylesheet" href="./Patricks_assets/patrick.css" /> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto+Slab&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Monoton&family=Roboto+Mono&family=Roboto+Slab&display=swap" rel="stylesheet">  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
-<body>
-    <header>
-      <h1></h1>
-      <nav>
-      </nav>
-    </header>
-  
-<main>
-      <section id="01" class="container">
-        <div class="row"></div>
-          <div class="col s6">
-            <h2>Search Bar</h2>
 
-            <form>
-              <h2><label for="searchArtist">Search for an artist:</label></h2>
-              <input type="search" id="searchArtist" name="searchArtist">
-              <input type="submit" id="submit">
-            </form>
+<body class="">
+  <header class="container">
+    <h1 class="col s12 z-depth-2 teal lighten-2">Know your Music</h1>
+  </header>
+  <main class="container ">
+    <div class="row">
+      <section class="col s3">
+        <div class="row">
+          <section class="z-depth-2 green accent-3" id="01">
+            <div class="row">
+              <div class="col">
+                <h3 class="flow-text">Search Bar</h3>
+                <form>
+                  <h3 class="flow-text"><label for="searchArtist">Search for an artist:</label></h3>
+                  <input type="search" id="searchArtist" name="searchArtist">
+                  <input type="submit" id="submit">
+                </form>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="row">
+          <section class="z-depth-2 green accent-3">
+            <div class="row">
+              <div class="col" id="searchHistory">
+                <h3 class="flow-text">Search History</h3>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+      <section class="col s5">
+        <div class="row">
+          <div class="z-depth-2 orange lighten-1" id="nameTitle">
+            checking
+          </div>
+        </div>
+        <div class="row">
+          <div class="z-depth-2 orange lighten-1" id="imageCard">
+            Images
+          </div>
+        </div>
+        <div class="row">
+          <div class="z-depth-2 orange lighten-1" id="genreCard">
+            Genre
           </div>
         </div>
 
-
-
-
-
-        
-      </section>
-      <section id="02">
-        <article>
-          <h2></h2>
-          <div>
-
+        <section class="row">
+          <div class="z-depth-2" id="02">
+            <div class="row">
+              <ol class="song-list"> Artists top 5 songs:
+                <li id="song1"></li>
+                <li id="song2"></li>
+                <li id="song3"></li>
+                <li id="song4"></li>
+                <li id="song5"></li>
+              </ol>
+            </div>
           </div>
-          <form>
-
-          </form>
-        </article>
-
-
-
-
-        
+        </section>
       </section>
-      <section id="03">
-        <article>
-          <h2></h2>
-          <div>
-
+      <section class="col s4">
+        <div class="z-depth-2">
+          <div id="descriptionBox"> Once you've searched for an artist this is where you can read more about them.
           </div>
-          <form>
-
-          </form>
-        </article>
-
-
-
-
-
-
+        </div>
       </section>
-      <section id="04">
-        <article>
-          <h2></h2>
-          <div>
-
-          </div>
-          <form>
-
-          </form>
-        </article>
-
+      <div class="row"></div>
+      <div id="linksBox">
+        <span id="linkBoxTitle"></span>
+        <button id="wikiLink">WikiPage For Artist</button>
+        <button id="youtubeLink">Youtube Videos For Artist</button>
+      </div>
+      <div>
+      </div>
+    </div>
 
 
 
 
-      </section>
-    </main>
-    
-  
-    <footer>
-      <script src="script.js"></script>
-      <span></span>
-    </footer>
-  </body>
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-  
-  </html>
+    </div>
+  </main>
+
+
+  <footer>
+    <script src="script.js"></script>
+    <!-- <script src="./Brennans_assets/BCscript.js"></script> -->
+    <!-- <script src="./Sada_assets/sada.js"></script> -->
+    <!-- <script src="./Patricks_assets/patrick.js"></script> -->
+    <!-- <script src="./db_assets/danny.js"></script> -->
+    <span></span>
+  </footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+</html>
