@@ -29,6 +29,8 @@ function getApi(event) {
     })
     .then(function (data) {
       var obj = JSON.parse(JSON.stringify(data));
+      console.log(obj);
+
       var description = document.getElementById('descriptionBox');
       description.textContent = obj.artist.bio.summary;
       wikiLink.style.visibility = 'visible';

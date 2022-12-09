@@ -1,4 +1,4 @@
-// var fetchButton = document.getElementById('submit');
+var fetchButton = document.getElementById('submit');
 // var wikiLink = document.getElementById('wikiLink');
 // var youtubeLink = document.getElementById('youtubeLink');
 // wikiLink.style.visibility='hidden';
@@ -45,28 +45,32 @@
 //     window.location.href= `https://www.youtube.com/results?search_query=${searchBar}`;
 //     }
 
-//   fetchButton.addEventListener('click', getApi);
 
-function getLinksApi () {
 
-  linksUrl = `https://tastedive.com/api/similar?{query}={value}&k=445472-KnowYour-SHRH2F95`;
+function getLinksApi (event) {
+    event.preventDefault();
+
+  var searchBar = document.getElementById('searchArtist').value;
+  linksUrl = `https://tastedive.com/api/similar?q=${searchBar}&k=445472-KnowYour-SHRH2F95&format=json`;
+  console.log(searchBar);
 
   fetch(linksUrl)
     .then((response) => {
       console.log(response);
        return response.json();
       })
-      // .then(function(data){
-      //   var obj = JSON.parse(JSON.stringify(data));
-      //   var description = document.getElementById('descriptionBox');
-      //   description.textContent = obj.artist.bio.summary;
-      //   wikiLink.style.visibility='visible';
-      //   youtubeLink.style.visibility='visible';
-      // })
+      .then(function(data){
+        var obj = JSON.parse(JSON.stringify(data));
+        console.log(obj);
+        // var description = document.getElementById('descriptionBox');
+        // description.textContent = obj.artist.bio.summary;
+        // wikiLink.style.visibility='visible';
+        // youtubeLink.style.visibility='visible';
+      })
 
 
 
 }
 
-
+fetchButton.addEventListener('click', getLinksApi);
 
