@@ -1,82 +1,4 @@
 var fetchButton = document.getElementById('submit');
-// var wikiLink = document.getElementById('wikiLink');
-// var youtubeLink = document.getElementById('youtubeLink');
-// wikiLink.style.visibility='hidden';
-// youtubeLink.style.visibility='hidden';
-
-// //get info from API and load decription in box.
-// function getApi(event) {
-//     event.preventDefault();
-    
-//     var searchBar = document.getElementById('searchArtist').value;
-//     var linkBoxTitle = document.getElementById('linkBoxTitle');
-    
-//     linkBoxTitle.textContent = searchBar;
-//     linkBoxTitle.dataset.lastSearch = searchBar;
-//     $('input[name="searchArtist"]').val('');
-    
-//     youtubeLink.addEventListener('click', function(){
-//       travelToVideo(linkBoxTitle.dataset.lastSearch);
-//       });
-
-//     wikiLink.addEventListener('click',function(){
-//       travelToLink(linkBoxTitle.dataset.lastSearch);
-//       });
-
-//     var requestUrl = ` http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&format=json&artist=${searchBar}&api_key=6eb7995f9da6e507011787533014528f`;
-//     fetch(requestUrl)
-//     .then((response) => {
-//        return response.json();
-//       })
-//       .then(function(data){
-//         var obj = JSON.parse(JSON.stringify(data));
-//         var description = document.getElementById('descriptionBox');
-//         let string = obj.artist.bio.summary;
-//         // let newStr = str.replace()
-//         console.log(string);
-//         description.innerHTML = obj.artist.bio.summary;
-//         wikiLink.style.visibility='visible';
-//         youtubeLink.style.visibility='visible';
-//       })
-//     }
-
-// function travelToLink (searchBar) {
-//     window.location.href= `https://en.wikipedia.org/wiki/${searchBar}`;
-//     }
-
-// function travelToVideo (searchBar) {
-//     window.location.href= `https://www.youtube.com/results?search_query=${searchBar}`;
-//     }
-
-
-
-// function getLinksApi (event) {
-//     event.preventDefault();
-
-//   var searchBar = document.getElementById('searchArtist').value;
-//   linksUrl = `https://tastedive.com/api/similar?q=${searchBar}&k=445478-Musickno-KWBLL69H`;
-//   console.log(searchBar);
-
-//   fetch(linksUrl)
-//     .then((response) => {
-//       console.log(response);
-//        return response.text();
-//       })
-//       .then(function(data){
-//         var obj = JSON.parse(JSON.stringify(data));
-//         console.log(obj);
-//         // var description = document.getElementById('descriptionBox');
-//         // description.textContent = obj.artist.bio.summary;
-//         // wikiLink.style.visibility='visible';
-//         // youtubeLink.style.visibility='visible';
-//       })
-
-
-
-// }
-
-
-var fetchButton = document.getElementById('submit');
 var wikiLink = document.getElementById('wikiLink');
 var youtubeLink = document.getElementById('youtubeLink');
 wikiLink.style.visibility = 'hidden';
@@ -98,7 +20,99 @@ similarArtists5.style.visibility = 'hidden';
 function getApiAgain(searchBar, event) {
   // event.preventDefault();
   fetchApi(searchBar);
-  
+  var linkBoxTitle = document.getElementById('linkBoxTitle');
+  linkBoxTitle.dataset.lastSearch = searchBar;
+  youtubeLink.addEventListener('click', function () {
+    travelToVideo(linkBoxTitle.dataset.lastSearch);
+  });
+
+  wikiLink.addEventListener('click', function () {
+    travelToLink(linkBoxTitle.dataset.lastSearch);
+  });
+  var requestUrl = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&format=json&artist=${searchBar}&api_key=6eb7995f9da6e507011787533014528f`;
+  fetch(requestUrl)
+    .then((response) => {
+      return response.json();
+    })
+    .then(function (data) {
+      var obj = JSON.parse(JSON.stringify(data));
+      var description = document.getElementById('descriptionBox');
+      var artistTitle = document.getElementById('nameTitle');
+      artistTitle.innerHTML = obj.similar.info[0].name;
+      console.log(obj.Similar.Info[0].Name);
+      description.innerHTML = obj.artist.bio.summary;
+      wikiLink.style.visibility = 'visible';
+      youtubeLink.style.visibility = 'visible';
+    })
+  // This function saves the users search history  
+  function saveHistory(searchBar) {
+    // event.preventDefault();
+    var searchHistory = document.getElementById('searchHistory');
+    var searchHistoryE1 = document.createElement("button");
+    searchHistoryE1.innerHTML = searchBar;
+    searchHistoryE1.dataset.name = searchBar;
+    searchHistory.appendChild(searchHistoryE1);
+    searchHistoryE1.addEventListener('click',function(){
+      getApiAgain(searchBar);
+      getSimilarArtists(searchBar);
+    })
+  }
+  saveHistory(searchBar)
+  function showAlbum(searchBar) {
+    var url = `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${searchBar}&api_key=6eb7995f9da6e507011787533014528f&format=json`;
+    var image = document.getElementById("imageCard");
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        const imageUrl = data.topalbums.album[0].image.pop()["#text"];
+        image.innerHTML = `<img src="${imageUrl}" />`;
+      });
+  }
+  function showInfo(searchBar) {
+    var url = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${searchBar}&api_key=6eb7995f9da6e507011787533014528f&format=json`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        const genres = data.artist.tags.tag.map((genre) => genre.name).join(", ");
+        document.getElementById("genreCard").textContent = genres;
+      });
+  }
+  //get info from API and load description in box.
+  function fetchApi(searchBar) {
+    showAlbum(searchBar);
+    showInfo(searchBar);
+  }
+  function getTopTracks(searchBar) {
+    var linkBoxTitle = document.getElementById('linkBoxTitle');
+    linkBoxTitle.dataset.lastSearch = searchBar;
+    requestUrl = `http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${searchBar}&api_key=6eb7995f9da6e507011787533014528f&format=json`
+    fetch(requestUrl)
+        .then((response) => {
+            return response.json();
+        })
+        .then(function (data) {
+            
+            let index = 1;
+            for (let i=0; i < 5; i++) {
+                document.querySelector("#song" + index).textContent = data.toptracks.track[i].name;
+                index += 1
+            }
+        })
+  }
+  getTopTracks(searchBar);
+}
+
+var fetchButton = document.getElementById('submit');
+var wikiLink = document.getElementById('wikiLink');
+var youtubeLink = document.getElementById('youtubeLink');
+wikiLink.style.visibility = 'hidden';
+youtubeLink.style.visibility = 'hidden';
+
+
+function getApi(event) {
+  event.preventDefault();
+  fetchApi();
+  var searchBar = document.getElementById('searchArtist').value;
   var linkBoxTitle = document.getElementById('linkBoxTitle');
 
   
@@ -129,16 +143,22 @@ function getApiAgain(searchBar, event) {
 
 
   // This function saves the users search history  
-  function saveHistory(searchBar) {
+  function saveHistory(event) {
     // event.preventDefault();
-    var searchHistory = $('#searchHistory')
-    
-    var searchHistoryE1 = $('<button class="searchHistoryResult">')
-    searchHistoryE1.text(searchBar)
-    searchHistory.append(searchHistoryE1)
+    var searchHistory = document.getElementById('searchHistory');
+    var searchHistoryE1 = document.createElement("button");
+    searchHistoryE1.innerHTML = searchBar;
+    searchHistoryE1.dataset.name = searchBar;
+    searchHistory.appendChild(searchHistoryE1);
+    searchHistoryE1.addEventListener('click',function(){
+      getApiAgain(searchBar);
+      getSimilarArtists(searchBar);
+    })
+
+
 
   }
-  saveHistory(searchBar)
+  saveHistory()
 
 
   // This function will call information from partners' inputs
@@ -154,8 +174,8 @@ function getApiAgain(searchBar, event) {
 
   var fetchButton = document.getElementById("submit");
 
-  function showAlbum(searchBar) {
-    var url = `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${searchBar}&api_key=6eb7995f9da6e507011787533014528f&format=json`;
+  function showAlbum(artist) {
+    var url = `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${artist}&api_key=6eb7995f9da6e507011787533014528f&format=json`;
     var image = document.getElementById("imageCard");
 
     fetch(url)
@@ -166,8 +186,8 @@ function getApiAgain(searchBar, event) {
       });
   }
 
-  function showInfo(searchBar) {
-    var url = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${searchBar}&api_key=6eb7995f9da6e507011787533014528f&format=json`;
+  function showInfo(artist) {
+    var url = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${artist}&api_key=6eb7995f9da6e507011787533014528f&format=json`;
 
     fetch(url)
       .then((response) => response.json())
@@ -178,21 +198,21 @@ function getApiAgain(searchBar, event) {
   }
 
   //get info from API and load description in box.
-  function fetchApi(searchBar) {
+  function fetchApi(event) {
     // event.preventDefault();
-    // var artist = document.getElementById("searchArtist").value;
-    showAlbum(searchBar);
-    showInfo(searchBar);
+    var artist = document.getElementById("searchArtist").value;
+    showAlbum(artist);
+    showInfo(artist);
   }
 
-  function getTopTracks(searchBar) {
-    // var artist = document.getElementById('searchArtist').value;
+  function getTopTracks(event) {
+    var artist = document.getElementById('searchArtist').value;
     var linkBoxTitle = document.getElementById('linkBoxTitle');
 
     
-    linkBoxTitle.dataset.lastSearch = searchBar;
+    linkBoxTitle.dataset.lastSearch = artist;
 
-    requestUrl = `http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${searchBar}&api_key=6eb7995f9da6e507011787533014528f&format=json`
+    requestUrl = `http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${artist}&api_key=6eb7995f9da6e507011787533014528f&format=json`
     
     fetch(requestUrl)
         .then((response) => {
@@ -207,7 +227,7 @@ function getApiAgain(searchBar, event) {
             }
         })
   }
-  getTopTracks(searchBar);
+  getTopTracks();
 
   // $('input[name="searchArtist"]').val('');
 }
@@ -222,44 +242,4 @@ function travelToVideo(searchBar) {
 }
 
 
-// fetchButton.addEventListener('click', getApi);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+fetchButton.addEventListener('click', getApi);
