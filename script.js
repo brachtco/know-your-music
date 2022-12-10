@@ -21,7 +21,7 @@ function getApi(event) {
   wikiLink.addEventListener('click', function () {
     travelToLink(linkBoxTitle.dataset.lastSearch);
   });
-  var requestUrl = ` http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&format=json&artist=${searchBar}&api_key=6eb7995f9da6e507011787533014528f`;
+  var requestUrl = `http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&format=json&artist=${searchBar}&api_key=6eb7995f9da6e507011787533014528f`;
 
   fetch(requestUrl)
     .then((response) => {
@@ -29,7 +29,7 @@ function getApi(event) {
     })
     .then(function (data) {
       var obj = JSON.parse(JSON.stringify(data));
-      console.log(obj);
+      
 
       var description = document.getElementById('descriptionBox');
       description.innerHTML = obj.artist.bio.summary;
@@ -42,7 +42,7 @@ function getApi(event) {
   function saveHistory(event) {
     // event.preventDefault();
     var searchHistory = $('#searchHistory')
-    console.log("found")
+    
     var searchHistoryE1 = $('<button class="searchHistoryResult">')
     searchHistoryE1.text(searchBar)
     searchHistory.append(searchHistoryE1)
@@ -56,7 +56,7 @@ function getApi(event) {
   // This function will call information from partners' inputs
   function savedArtists(event) {
     var savedArtists = $('.searchHistoryResult');
-    console.log(savedArtists)
+    
     //add click event that runs everyones function when click on an artist name
 
 
@@ -105,13 +105,13 @@ function getApi(event) {
     linkBoxTitle.dataset.lastSearch = artist;
 
     requestUrl = `http://ws.audioscrobbler.com/2.0/?method=artist.gettoptracks&artist=${artist}&api_key=6eb7995f9da6e507011787533014528f&format=json`
-    console.log(artist)
+    
     fetch(requestUrl)
         .then((response) => {
             return response.json();
         })
         .then(function (data) {
-            console.log(data)
+            
             let index = 1;
             for (let i=0; i < 5; i++) {
                 document.querySelector("#song" + index).textContent = data.toptracks.track[i].name;
@@ -121,7 +121,7 @@ function getApi(event) {
   }
   getTopTracks();
 
-  $('input[name="searchArtist"]').val('');
+  // $('input[name="searchArtist"]').val('');
 }
 
 
