@@ -82,13 +82,11 @@
           </div>
         </div>
         <div id="similarArtists">
-          <ol class="fiveArtists"> Similar Artists:
-            <li id="artist1"></li>
-            <li id="artist2"></li>
-            <li id="artist3"></li>
-            <li id="artist4"></li>
-            <li id="artist5"></li>
-          </ol>
+          <button class="similarArtists" id="similarArtists1"></button>
+          <button class="similarArtists" id="similarArtists2"></button>
+          <button class="similarArtists" id="similarArtists3"></button>
+          <button class="similarArtists" id="similarArtists4"></button>
+          <button class="similarArtists" id="similarArtists5"></button>
         </div>
       </section>
       <div class="row"></div>
@@ -110,8 +108,8 @@
 
 
   <footer>
-    <script src="script.js"></script>
-    <!-- <script src="./Brennans_assets/BCscript.js"></script> -->
+    <!-- <script src="script.js"></script> -->
+    <script src="./Brennans_assets/BCscript.js"></script>
     <!-- <script src="./Sada_assets/sada.js"></script> -->
     <!-- <script src="./Patricks_assets/patrick.js"></script> -->
     <!-- <script src="./db_assets/danny.js"></script> -->
@@ -124,23 +122,63 @@
    var fetchButton = document.getElementById('submit');
    $(fetchButton).on("click" , function(){
                 var searchBar = document.getElementById('searchArtist').value;
-                console.log(searchBar);
+                similarArtists1.style.visibility = 'visible';
+                similarArtists2.style.visibility = 'visible';
+                similarArtists3.style.visibility = 'visible';
+                similarArtists4.style.visibility = 'visible';
+                similarArtists5.style.visibility = 'visible';
                 $.ajax({
-                    url: `https://tastedive.com/api/similar?q=${searchBar}&k=445478-Musickno-KWBLL69H&`,
+                    url: `https://tastedive.com/api/similar?q=${searchBar}&k=445478-Musickno-KWBLL69H&info=1`,
                     dataType: 'jsonp',
                     success: function(results){
                         var obj = JSON.parse(JSON.stringify(results));
                         console.log(obj);
+                        var searchBar = document.getElementById('searchArtist');
+                        var artistTitle = document.getElementById('nameTitle');
+                        artistTitle.innerHTML = obj.Similar.Info[0].Name;
+                        console.log(obj.Similar.Info[0].yUrl);
                         index = 1;
                         for (let i=0; i < 5; i++) {
-                          document.getElementById("artist" + index).textContent = obj.Similar.Results[i].Name;
+                          similarArtists[i] = document.getElementById('similarArtists' + index);
+                          similarArtists[i].innerHTML = obj.Similar.Results[i].Name;
                           index += 1
+                          similarArtists[i].addEventListener('click', function(){
+                          searchBar = similarArtists[i].innerHTML;
+                          console.log(searchBar);
+                          getApiAgain(searchBar);
+                          getSimilarArtists(searchBar);
+                          })
                         }
                         
                         $('input[name="searchArtist"]').val('');
                     }
                 });
             })
+            function getSimilarArtists(searchBar){
+                $.ajax({
+                    url: `https://tastedive.com/api/similar?q=${searchBar}&k=445478-Musickno-KWBLL69H&`,
+                    dataType: 'jsonp',
+                    success: function(results){
+                        var obj = JSON.parse(JSON.stringify(results));
+                        var searchBar = document.getElementById('searchArtist');
+                        var artistTitle = document.getElementById('nameTitle');
+                        artistTitle.innerHTML = obj.Similar.Info[0].Name;
+                        index = 1;
+                        for (let i=0; i < 5; i++) {
+                          similarArtists[i] = document.getElementById('similarArtists' + index);
+                          similarArtists[i].innerHTML = obj.Similar.Results[i].Name;
+                          index += 1
+                        }
+                        
+                        $('input[name="searchArtist"]').val('');
+                    }
+                });
+              }        
+
+
+
+
+
 </script>
 
 </html>
