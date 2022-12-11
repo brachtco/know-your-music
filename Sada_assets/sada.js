@@ -15,6 +15,7 @@ similarArtists2.style.visibility = 'hidden';
 similarArtists3.style.visibility = 'hidden';
 similarArtists4.style.visibility = 'hidden';
 similarArtists5.style.visibility = 'hidden';
+// var similarArtistsArray = [similarArtists1, similarArtists2, similarArtists3, similarArtists4, similarArtists5]
 
 
 
@@ -42,7 +43,7 @@ function getApiAgain(searchBar, event) {
       wikiLink.style.visibility = 'visible';
       youtubeLink.style.visibility = 'visible';
     })
-    
+
   // This function saves the users search history  
   function saveHistory(searchBar) {
     // event.preventDefault();
@@ -53,7 +54,7 @@ function getApiAgain(searchBar, event) {
     // searchHistory.appendChild(searchHistoryE1);
     searchHistoryE1.addEventListener('click', function () {
       getApiAgain(searchBar);
-      getSimilarArtists(searchBar);
+      // getSimilarArtists(searchBar);
     })
   }
   saveHistory(searchBar)
