@@ -74,5 +74,6 @@ function getLinksApi (event) {
 
 }
 
+
 fetchButton.addEventListener('click', getApi);
 
