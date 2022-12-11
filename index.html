@@ -12,6 +12,27 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto+Slab&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Monoton&family=Roboto+Mono&family=Roboto+Slab&display=swap" rel="stylesheet">  <link rel="stylesheet" href="./style.css" />
   <link rel="stylesheet" href="./style.css" />
+  <script type = "text/javascript" src= "https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> 
+  <script>
+ $(document).ready(function(){
+                // searchBar = document.getElementById("searchBar").value 
+                $.ajax({
+                    url: `https://tastedive.com/api/similar?q=Journey&k=445478-Musickno-KWBLL69H&`,
+                    dataType: 'jsonp',
+                    success: function(results){
+                        var text = '';
+                        var len = results.length;
+                        console.log(results['Similar']['Results'])
+                        // for(var i=0;i<len;i++){
+                        //     twitterEntry = dataWeGotViaJsonp[i];
+                        //     text += '<p><img src = "' + twitterEntry.user.profile_image_url_https +'"/>' + twitterEntry['text'] + '</p>'
+                        // }
+                        // $('#twitterFeed').html(text);
+                    }
+                });
+            })
+  </script>
+
 </head>
 
 <body class="">
@@ -112,7 +133,7 @@
     <script src="./Brennans_assets/BCscript.js"></script>
     <!-- <script src="./Sada_assets/sada.js"></script> -->
     <!-- <script src="./Patricks_assets/patrick.js"></script> -->
-    <!-- <script src="./db_assets/danny.js"></script> -->
+    <script src="./db_assets/danny.js"></script> 
     <span></span>
   </footer>
 </body>
