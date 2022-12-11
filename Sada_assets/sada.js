@@ -150,6 +150,7 @@ function getApi(event) {
     searchHistory.appendChild(searchHistoryE1);
     searchHistoryE1.addEventListener('click', function () {
       getApiAgain(searchBar);
+    
     })
 
 
