@@ -243,4 +243,5 @@ function travelToVideo(searchBar) {
 }
 
 
-fetchButton.addEventListener('click', getApi);
+
+fetchButton.addEventListener("click", getApi);

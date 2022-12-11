@@ -3,9 +3,6 @@ var fetchButton = document.getElementById("submit");
 var artistUrl = `https://tastedive.com/api/similar?q=${searchBar}&k=445472-KnowYour-SHRH2F95&format=json`;
 var searchBar = document.getElementById("searchArtist").value;
 
-
-
-
 //From the album image arrary use the pop method to grab last image in the index and print to the screen
 function showAlbum(artist) {
   var url = `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${artist}&api_key=6eb7995f9da6e507011787533014528f&format=json`;
@@ -32,7 +29,7 @@ function showInfo(artist) {
     });
 }
 
-//Take the value input(artist name) and call the showAlbum amd showInfo functions 
+//Take the value input(artist name) and call the showAlbum amd showInfo functions
 //to show the albums and genres on the screen
 function fetchApi(event) {
   event.preventDefault();
@@ -41,13 +38,15 @@ function fetchApi(event) {
   showAlbum(artist);
   showInfo(artist);
 }
+console.log("hello");
 
-function renderSavedArtist() {
-  localStorage.getItem("searchArtist");
-  localStorage.setItem("searchArtist");
-  renderSavedArtist();
-}
 
-fetchButton.addEventListener("click", getApi);
+fetchButton.addEventListener("click", function() {
+
+    localStorage.getItem("searchBar");
+    localStorage.setItem("searchBar");
+  
+  
+});
 
 //445472-KnowYour-SHRH2F95
