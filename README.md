@@ -9,7 +9,7 @@ Know Your Music is a website that allows the user to search up any music artist 
 When the user types an artist name into the input field and clicks submit
 the artist information will appear on the screen including:
 
-- Name of the artists
+- Name of the artist
 - A short bio of the artist with a link to Last.fm with more details
 - An image of one of the artist albums
 - The genres of the artist
