@@ -41,8 +41,9 @@ function fetchApi(event) {
 console.log("hello");
 
 fetchButton.addEventListener("click", function () {
-  localStorage.getItem("searchBar");
+  //localStorage.getItem("searchBar");
   localStorage.setItem("searchBar");
 });
 
 //445472-KnowYour-SHRH2F95
+console.log('hello');
