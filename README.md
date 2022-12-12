@@ -35,6 +35,7 @@ For Javascript we utiilzed jQuery and Materialize libraries and our own script.j
 
 
 ### Github Repo
+https://github.com/brachtco/know-your-music
 
 
 ### Screenshot
