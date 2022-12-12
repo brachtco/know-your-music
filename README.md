@@ -4,9 +4,9 @@ A music application built by Sada Pan-nord, Danny Bracht, Patrick Ruf, and Brenn
 
 ## Description
 
-Know Your Music is a website that allows you to search up any music artist and recieve relevant information about them.
+Know Your Music is a website that allows the user to search up any music artist and recieve relevant information about them.
 
-When you type an artist name into the input field and click submit
+When the user types an artist name into the input field and clicks submit
 the artist information will appear on the screen including:
 
 - Name of the artists
@@ -17,18 +17,19 @@ the artist information will appear on the screen including:
 - A button which links to the artist youTube channel
 - An ordered list of the arist top 5 songs
 - A list of 5 similiar artists
-- When click on the button of a similar artist their infomation will appear
-- The page also features Search History so when you click submit any artist entered will be saved to the page.
-- And you can click on the artist button in Search History and their information will appear. 
+- When the user clicks on the button of a similar artist their infomation will appear
+- The page also features Search History so when the user clicks submit any artist entered will be saved to the page
+- And the user can click on the artist button in Search History and their  information will appear
 
-##Under the Hood
+## Under the Hood
 
 We used two APIs to fetch the information for arists: Last.fm and TasteDive.
 
 The Last.FM API was utilized to fetch the artist name, bio, album image, genres and top 5 tracks.
-The TasteDive API gives us the similar tracks.
+The TasteDive API gives us the similar tracks. And, the Wikipedia and youTube links are href elements
+built in two functions.
 
-For CSS, we used the the Materialize library, as well as style.css, and we used Google fonts.
+For CSS, we used the Materialize library, as well as style.css, and we used Google fonts.
 For Javascript we utiilzed jQuery and Materialize libraries and our own script.js.
 
 ### Deployed Application
