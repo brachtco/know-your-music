@@ -7,7 +7,7 @@ A music application built by Sada Pan-nord, Danny Bracht, Patrick Ruf, and Brenn
 Know Your Music is a website that allows you to search up any music artist and recieve relevant information about them.
 
 When you type an artist name into the input field and click submit
-the artists information will appear on the screen including:
+the artist information will appear on the screen including:
 
 - Name of the artists
 - A short bio of the artist with a link to Last.fm with more details
