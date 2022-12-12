@@ -58,7 +58,7 @@ function getApiAgain(searchBar, event) {
   }
   saveHistory(searchBar);
   function showAlbum(searchBar) {
-    var url = `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${searchBar}&api_key=6eb7995f9da6e507011787533014528f&format=json`;
+    var url = `https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${searchBar}&api_key=6eb7995f9da6e507011787533014528f&format=json`;
     var image = document.getElementById("imageCard");
     fetch(url)
       .then((response) => response.json())
