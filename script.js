@@ -37,6 +37,7 @@ function getApiAgain(searchBar, event) {
     })
     .then(function (data) {
       var obj = JSON.parse(JSON.stringify(data));
+      console.log(obj, "just checking")
       var description = document.getElementById('descriptionBox');
       var artistTitle = document.getElementById('nameTitle');
       artistTitle.innerHTML = obj.similar.info[0].name;
@@ -101,6 +102,8 @@ function getApiAgain(searchBar, event) {
         })
   }
   getTopTracks(searchBar);
+  localStorage.setItem("artist", searchBar)
+
 }
 
 var fetchButton = document.getElementById('submit');
@@ -229,6 +232,7 @@ function getApi(event) {
         })
   }
   getTopTracks();
+  localStorage.setItem("artist", searchBar)
 
   // $('input[name="searchArtist"]').val('');
 }
