@@ -33,7 +33,7 @@ For CSS, we used the Materialize library, as well as style.css, and we used Goog
 For Javascript we utiilzed jQuery and Materialize libraries and our own script.js.
 
 ### Deployed Application
-
+https://brachtco.github.io/know-your-music/
 
 ### Github Repo
 https://github.com/brachtco/know-your-music
