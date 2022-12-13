@@ -100,6 +100,8 @@ function getApiAgain(searchBar, event) {
       });
   }
   getTopTracks(searchBar);
+  localStorage.setItem("artist", searchBar)
+
 }
 
 var fetchButton = document.getElementById("submit");
@@ -218,6 +220,7 @@ function getApi(event) {
       });
   }
   getTopTracks();
+  localStorage.setItem("artist", searchBar)
 
   // $('input[name="searchArtist"]').val('');
 }

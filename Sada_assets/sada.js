@@ -111,6 +111,7 @@ function getApi(event) {
   event.preventDefault();
   fetchApi();
   var searchBar = document.getElementById('searchArtist').value;
+  console.log(searchBar)
   var linkBoxTitle = document.getElementById('linkBoxTitle');
 
 
@@ -150,6 +151,7 @@ function getApi(event) {
     searchHistory.appendChild(searchHistoryE1);
     searchHistoryE1.addEventListener('click', function () {
       getApiAgain(searchBar);
+    
     })
 
 
@@ -213,6 +215,10 @@ function getApi(event) {
   }
   getTopTracks();
 
+  localStorage.setItem("artist", searchBar)
+
+
+
   // $('input[name="searchArtist"]').val('');
 }
 
@@ -227,3 +233,10 @@ function travelToVideo(searchBar) {
 
 
 fetchButton.addEventListener('click', getApi);
+var local = ""
+local.addEventListener("click", fetchButton, function (event) {
+  var searchBar = document.getElementById('searchArtist').value;
+  event.preventDefault();
+  localStorage.setItem("artist", searchBar)
+
+})
