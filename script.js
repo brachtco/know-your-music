@@ -37,9 +37,8 @@ function getApiAgain(searchBar, event) {
       var obj = JSON.parse(JSON.stringify(data));
       var description = document.getElementById("descriptionBox");
       var artistTitle = document.getElementById("nameTitle");
-      artistTitle.innerHTML = obj.similar.info[0].name;
-      console.log(obj.Similar.Info[0].Name);
       description.innerHTML = obj.artist.bio.summary;
+      artistTitle.innerHTML = obj.Similar.Info[0].Name;
       wikiLink.style.visibility = "visible";
       youtubeLink.style.visibility = "visible";
     });

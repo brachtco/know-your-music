@@ -238,7 +238,7 @@ function travelToLink(searchBar) {
 }
 
 function travelToVideo(searchBar) {
-  window.location.href = `https://www.youtube.com/results?search_query=${searchBar}`;
+  window.youtubeLink = `https://www.youtube.com/results?search_query=${searchBar}`;
 }
 
 
